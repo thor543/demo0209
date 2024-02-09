@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>index</title>
+<style>
+  #image {
+    max-width: 200px;
+    height: 200px;
+  }
+</style>
+</head>
+<body>
+
+<p id="greeting">新年快樂 妳美的就像出水福龍~~</p>
+
+<img id="image" src="" style="display:none;">
+
+<p id="hint" style="display:none;">我漂亮嗎哈哈哈哈</p>
+
+<button onclick="showImage()">點我</button>
+
+<script>
+  var currentImageIndex = 0; // 初始化图片索引为0
+  var totalImages = 3;
+
+  // 显示图片和文字，循环显示
+  function showImage() {
+    currentImageIndex = (currentImageIndex + 1) % (totalImages + 1); // 图片索引从0开始，所以总图片数需要加1
+    if (currentImageIndex === 0) {
+      document.getElementById('image').style.display = 'none'; // 图片索引为0时隐藏图片
+      document.getElementById('hint').style.display = 'none'; // 图片索引为0时隐藏提示文字
+      document.getElementById('greeting').style.display = 'block'; // 图片索引为0时显示“大家好”的文字
+    } else {
+      document.getElementById('greeting').style.display = 'none'; // 图片索引不为0时隐藏“大家好”的文字
+      document.getElementById('image').style.display = 'block'; // 图片索引不为0时显示图片
+      document.getElementById('hint').style.display = (currentImageIndex === totalImages) ? 'block' : 'none'; // 如果是第三张图片，显示提示文字
+      document.getElementById('image').src = 'pic' + currentImageIndex + '.jpg'; // 切换图片
+    }
+  }
+</script>
+
+</body>
+</html>
